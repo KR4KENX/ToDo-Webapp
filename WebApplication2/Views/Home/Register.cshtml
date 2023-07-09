@@ -1,0 +1,19 @@
+﻿@using WebApplication2.Controllers;
+@{
+    ViewData["Title"] = "Register";
+}
+<h1>Register</h1>
+<form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Register" style="display: flex; flex-direction: column; width: 50%; border: 1px solid black; padding: 20px; border-radius: 5px;">
+    <input type="hidden" value="1" />
+    <label for="Username">Username</label>
+    <input type="text" name="Username" />
+    <label for="Password">Password</label>
+    <input type="password" name="Password" />
+    <input style="margin-top: 25px; width: 50%; margin: 25px auto" type="submit" value="Login" />
+</form>
+<p>You have got an account? <a href="@Url.Action("Account", "Home")">Login here</a></p>
+
+@if (ViewBag.Registered == true)
+{
+        <h3>Created your account!</h3>   
+}

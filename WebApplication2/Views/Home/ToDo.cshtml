@@ -3,18 +3,19 @@
 }
 <h1>Your ToDo's</h1>
 <div style="margin-top: 15px;">
-    <h4>Add To Do</h4>
-
-    <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="ToDo" style="display: flex; flex-direction: column;">
+    <form method="get" enctype="multipart/form-data" asp-controller="Home" asp-action="ToDo" style="display: flex; flex-direction: column;">
         <label for="Title">Title</label>
-        <input name="Title" type="text" />
+        <select name="Title">
+            <option value="Shopping">Shopping</option>
+            <option value="Animal">Animal</option>
+            <option value="Habits">Habits</option>
+        </select>
         <label form="Description">Description</label>
         <textarea name="Description" rows="5"></textarea>
         <input style="margin-top:15px; margin-bottom: 25px;" type="submit" />
     </form>
 <div>
 <div>
-    <h4>Your ToDo</h4>
     <table>
         <tr>
             <th>Id</th>

@@ -9,6 +9,7 @@ namespace WebApplication2
             
         }
         public DbSet<ToDoModel> ToDo { get; set; } = default!;
+        public DbSet<UserModel> User { get; set; } = default!;
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

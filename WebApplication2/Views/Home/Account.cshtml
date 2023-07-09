@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Account";
+}
+<h1>Login</h1>
+<form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Account" style="display: flex; flex-direction: column; width: 50%; border: 1px solid black; padding: 20px; border-radius: 5px;">
+    <label for="Username">Username</label>
+    <input type="text" name="Username" />
+    <label for="Password">Password</label>
+    <input type="password" name="Password" />
+    <input style="margin-top: 25px; width: 50%; margin: 25px auto" type="submit" value="Login" />
+</form>
+<p>You havent't got an account? <a href="@Url.Action("Register", "Home")">Register here</a></p>
