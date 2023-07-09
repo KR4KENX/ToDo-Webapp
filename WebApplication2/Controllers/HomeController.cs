@@ -38,18 +38,22 @@ namespace WebApplication2.Controllers
             if (!ultilities.IsLogged(HttpContext))
                 return View("Unathorized");
 
+            var username = HttpContext.Session.GetString(SessionVariables.SessionKeyUsername);
+            var userId = _dbConfig.User.First<UserModel>(x => x.Username == username).Id;
+
             if (Title != null && Description != null)
             {
                 var toDo = new ToDoModel();
                 toDo.Title = Title;
                 toDo.Description = Description;
 
+                toDo.OwnerId = userId;
+
                 _dbConfig.ToDo.Add(toDo);
                 _dbConfig.SaveChanges();
-            }
+            };
 
-            var myData = _dbConfig.ToDo.ToList();
-            ViewBag.toDos = myData;
+            ViewBag.toDos = _dbConfig.ToDo.Where(x => x.OwnerId == userId).ToList();
 
             return View();
         }
