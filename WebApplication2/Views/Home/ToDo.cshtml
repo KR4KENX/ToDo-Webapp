@@ -18,17 +18,19 @@
 <div>
     <table>
         <tr>
-            <th>Id</th>
             <th>Title</th>
             <th>Description</th>
+            <th>Delete</th>
         </tr>
+        <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Delete">
         @foreach (ToDoModel todo in ViewBag.toDos)
             {
                    <tr>
-                       <td>@todo.Id</td>
                        <td>@todo.Title</td>
                        <td>@todo.Description</td>
+                        <td><button class="button-7" name=id value=@todo.Id role="button">X</button></td>
                    </tr> 
             }
+         </form>
     </table>
 </div>

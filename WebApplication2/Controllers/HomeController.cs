@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
 using System.Linq;
 using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication2.Controllers
 {
@@ -125,6 +126,12 @@ namespace WebApplication2.Controllers
             HttpContext.Session.Remove(SessionVariables.SessionKeySessionId);
             HttpContext.Session.Remove(SessionVariables.SessionKeyUsername);
             return Redirect("/");
+        }
+        public IActionResult Delete(int id)
+        {
+            _dbConfig.ToDo.Where(x => x.Id == id).ExecuteDelete();
+            _dbConfig.SaveChanges();
+            return Redirect("/Home/ToDo");
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
